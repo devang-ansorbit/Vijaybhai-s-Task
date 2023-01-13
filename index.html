@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #input-container {
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            margin: 10px auto;
+            padding: 10px;
+        }
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: center;    
+            flex-direction: column;
+            line-height: 10px;
+        }
+        input[type=submit] {
+            border: 1px solid;
+            margin: 15px auto;
+        }
+        #output_board {
+            display: grid;
+            border: 1px solid rgb(223, 223, 223);
+            grid-template-columns: repeat(10,1fr);
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+         #output_board > div {
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+         }
+         h1 {
+            text-align: center;
+         }
+     </style>
+</head>
+<body>
+    <div>
+        <h1>Table Input :</h1>
+        <div id="input-container">
+            <form action="" onsubmit="handleSubmit()">
+                <div>
+                <label for="">enter the DIGIT :</label>
+                <input id="input" type="number" placeholder="enter the number">
+                </div>
+                <input type="submit">
+            </form>
+        </div>
+        <h1>Table Chart :</h1>
+        <div id="output_board">
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    function handleSubmit() {
+    event.preventDefault();
+    let reply = parseInt(document.getElementById("input").value);
+     document.getElementById("output_board").innerHTML=null;
+    let n=reply;
+    let count = 1;
+    while(count<=n){
+        let tempDiv = document.createElement("div");
+        for(let i=1;i<=10;i++){
+            // let calc = `$`
+            let p = document.createElement("p");
+            p.innerText = `${count} × ${i} = ${count*i}`;
+            tempDiv.append(p);
+            document.getElementById("output_board").append(tempDiv);
+        }
+        count++;
+    }
+    }
+   
+   
+</script>
